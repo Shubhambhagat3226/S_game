@@ -10,7 +10,7 @@ public class MyFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        MyPanel myPanel = new MyPanel();
+        MyPanel myPanel = new MyPanel(this);
         myPanel.setFocusable(true);
         add(myPanel);
         pack();

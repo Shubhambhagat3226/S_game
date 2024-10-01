@@ -15,10 +15,15 @@ import java.util.Random;
 
 public class MyPanel extends JPanel implements ActionListener, KeyListener {
 
+    private MyFrame frame;
 
-    private class Tile{
+     class Tile{
         private int x;
         private int y;
+
+        public void setXY(){
+            x = y = 5;
+        }
 
         public Tile(int x, int y) {
             this.x = x;
@@ -53,7 +58,8 @@ public class MyPanel extends JPanel implements ActionListener, KeyListener {
     //game over
     boolean gameOver;
 
-    public MyPanel(){
+    public MyPanel(MyFrame frame){
+        this.frame = frame;
         setPreferredSize(new Dimension(CommonConstant.FRAME_WIDTH, CommonConstant.FRAME_HEIGHT));
         setBackground(Color.black);
 
@@ -67,7 +73,7 @@ public class MyPanel extends JPanel implements ActionListener, KeyListener {
         placeFood();
 
         //game Loop
-        gameLoop = new Timer(110, this);
+        gameLoop = new Timer(150, this);
         gameLoop.start();
 
         //snakeBody
@@ -228,6 +234,7 @@ public class MyPanel extends JPanel implements ActionListener, KeyListener {
         if (gameOver){
             setSound(gameOverSound);
             gameLoop.stop();
+            new Retry(frame, this).setVisible(true);
         }
     }
 
