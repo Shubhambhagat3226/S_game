@@ -58,6 +58,9 @@ public class MyPanel extends JPanel implements ActionListener, KeyListener {
     //game over
     boolean gameOver;
 
+    // high score
+    int highScore;
+
     public MyPanel(MyFrame frame){
         this.frame = frame;
         setPreferredSize(new Dimension(CommonConstant.FRAME_WIDTH, CommonConstant.FRAME_HEIGHT));
