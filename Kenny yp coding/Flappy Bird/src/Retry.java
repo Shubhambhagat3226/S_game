@@ -1,26 +1,26 @@
-import Constant.CommonConstant;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Retry extends JDialog {
 
-    private MyFrame source;
-    private MyPanel panel;
+    private MyFrame frame;
+    private FlappyBird panel;
 
-    public Retry(MyFrame frame, MyPanel panel){
-        this.source = frame;
+    public Retry(MyFrame frame, FlappyBird panel){
+        this.frame = frame;
         this.panel = panel;
-        setTitle("Message");
-        setSize(300,170);
+        setTitle("GAME OVER!!");
+        setSize(250,130);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(source);
+        setLocationRelativeTo(frame);
 
         addComponent();
+
     }
 
     public void addComponent(){
-        JLabel label = new JLabel("GAME OVER!!");
+        JLabel label = new JLabel("SCORE: " + (int) panel.score);
         label.setFont(new Font("Arial", Font.PLAIN, 24));
         label.setHorizontalAlignment(SwingConstants.CENTER);
         add(label, BorderLayout.CENTER);
@@ -29,12 +29,16 @@ public class Retry extends JDialog {
         button.setFont(new Font("Arial", Font.PLAIN, 20));
         button.setFocusPainted(false);
         button.addActionListener(e -> {
-            panel.gameLoop.start();
+                //reset the game
+            panel.score = 0;
+            panel.velocityY = 0;
+            panel.bird.resetX(frame.getBoardWidth()/8);
+            panel.bird.resetY(frame.getBoardHeight()/2);
+            panel.pipes.clear();
+            panel.gravity = 0;
             panel.gameOver = false;
-            panel.snakeHead.setXY();
-            panel.snakeBody.clear();
-            CommonConstant.VELOCITY_X = 0;
-            CommonConstant.VELOCITY_Y = 0;
+            panel.placePipeTimer.start();
+            panel.gameLoop.start();
             dispose();
         });
         add(button, BorderLayout.SOUTH);
