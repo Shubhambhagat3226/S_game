@@ -31,6 +31,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     int velocityY = 0;  // move bird up/down speed
     int gravity = 0;
     double score = 0;
+    int highscore = 0;
 
     //array list of pipe
     ArrayList<Pipe> pipes;
