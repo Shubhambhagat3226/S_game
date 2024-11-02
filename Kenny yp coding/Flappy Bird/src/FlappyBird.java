@@ -4,7 +4,6 @@ import gameElement.Pipe;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.sound.sampled.*;
@@ -52,15 +51,15 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
         addKeyListener(this);
 
         //load images
-        backgroundImg = new ImageIcon(getClass().getResource("./resource/flappybirdbg.png")).getImage();
-        birdImg = new ImageIcon(getClass().getResource("./resource/flappybird.png")).getImage();
-        topPipeImg = new ImageIcon(getClass().getResource("./resource/toppipe.png")).getImage();
-        lowerPipeImage = new ImageIcon(getClass().getResource("./resource/bottompipe.png")).getImage();
+        backgroundImg = new ImageIcon(getClass().getResource("resource/flappybirdbg.png")).getImage();
+        birdImg = new ImageIcon(getClass().getResource("resource/flappybird.png")).getImage();
+        topPipeImg = new ImageIcon(getClass().getResource("resource/toppipe.png")).getImage();
+        lowerPipeImage = new ImageIcon(getClass().getResource("resource/bottompipe.png")).getImage();
 
         //load Sound
-        clickSound = "src/resource/sfx_wing.wav";
-        scoreSound = "src/resource/sfx_point.wav";
-        gameOverSound = "src/resource/gameOver.wav";
+        clickSound = "resource/sfx_wing.wav";
+        scoreSound = "resource/sfx_point.wav";
+        gameOverSound = "resource/gameOver.wav";
 
         //bird
         bird = new Bird(frame.getBoardWidth(), frame.getBoardHeight(), birdImg);
